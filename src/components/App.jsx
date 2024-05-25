@@ -2,7 +2,6 @@ import AddTask from "./AddTask";
 import ButtonGroup from "./ButtonGroup";
 import Counter from "./Counter";
 import ItemList from "./ItemList";
-import Select from "./Select";
 import { useState } from "react";
 import { initialItems } from "../lib/items";
 
@@ -62,7 +61,6 @@ function App() {
                         completedNumber={completedNumber}
                         totalNumber={totalNumber}
                     />
-                    <Select />
                     <ItemList
                         handleToggleItem={handleToggleItem}
                         handleDeleteItem={handleDeleteItem}
