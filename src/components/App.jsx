@@ -13,6 +13,26 @@ function App() {
         setItems((prevItems) => [...prevItems, newItem]);
     };
 
+    const handleRemoveAllItems = () => {
+        setItems([]);
+    };
+
+    const handleResetToInitial = () => {
+        setItems(initialItems);
+    };
+
+    const handleMarkAllAsComplete = () => {
+        setItems((prevItems) =>
+            prevItems.map((item) => ({ ...item, completed: true }))
+        );
+    };
+
+    const handleMarkAllAsIncomplete = () => {
+        setItems((prevItems) =>
+            prevItems.map((item) => ({ ...item, completed: false }))
+        );
+    };
+
     return (
         <div className="container">
             <div className="row">
@@ -25,7 +45,12 @@ function App() {
                 </div>
                 <div className="col-4">
                     <AddTask handleAddItem={handleAddItem} />
-                    <ButtonGroup />
+                    <ButtonGroup
+                        handleRemoveAllItems={handleRemoveAllItems}
+                        handleResetToInitial={handleResetToInitial}
+                        handleMarkAllAsComplete={handleMarkAllAsComplete}
+                        handleMarkAllAsIncomplete={handleMarkAllAsIncomplete}
+                    />
                 </div>
             </div>
         </div>
