@@ -33,6 +33,16 @@ function App() {
         );
     };
 
+    const handleToggleItem = (title) => {
+        setItems((prevItems) =>
+            prevItems.map((item) =>
+                item.title === title
+                    ? { ...item, completed: !item.completed }
+                    : item
+            )
+        );
+    };
+
     return (
         <div className="container">
             <div className="row">
@@ -41,7 +51,10 @@ function App() {
                 <div className="col-8">
                     <Counter />
                     <Select />
-                    <ItemList items={items} />
+                    <ItemList
+                        handleToggleItem={handleToggleItem}
+                        items={items}
+                    />
                 </div>
                 <div className="col-4">
                     <AddTask handleAddItem={handleAddItem} />

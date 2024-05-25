@@ -1,11 +1,12 @@
-function Item({ item }) {
+function Item({ handleToggleItem, item }) {
     return (
         <li>
             <label>
                 <input
                     type="checkbox"
                     className="form-check-input"
-                    defaultChecked={item.completed}
+                    checked={item.completed}
+                    onChange={() => handleToggleItem(item.title)}
                 />
                 {item.title}
             </label>

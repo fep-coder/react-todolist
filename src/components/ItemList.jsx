@@ -1,11 +1,15 @@
 import Item from "./Item";
 
-function ItemList({ items }) {
+function ItemList({ handleToggleItem, items }) {
     return (
         <div className="form-check">
             <ul>
                 {items.map((item, index) => (
-                    <Item key={index} item={item} />
+                    <Item
+                        key={index}
+                        handleToggleItem={handleToggleItem}
+                        item={item}
+                    />
                 ))}
             </ul>
         </div>
