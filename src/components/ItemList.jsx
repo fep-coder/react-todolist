@@ -1,6 +1,6 @@
 import Item from "./Item";
 
-function ItemList({ handleToggleItem, items }) {
+function ItemList({ handleToggleItem, handleDeleteItem, items }) {
     return (
         <div className="form-check">
             <ul>
@@ -8,6 +8,7 @@ function ItemList({ handleToggleItem, items }) {
                     <Item
                         key={index}
                         handleToggleItem={handleToggleItem}
+                        handleDeleteItem={handleDeleteItem}
                         item={item}
                     />
                 ))}

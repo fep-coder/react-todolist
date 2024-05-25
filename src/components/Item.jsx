@@ -1,4 +1,4 @@
-function Item({ handleToggleItem, item }) {
+function Item({ handleToggleItem, handleDeleteItem, item }) {
     return (
         <li>
             <label>
@@ -10,7 +10,12 @@ function Item({ handleToggleItem, item }) {
                 />
                 {item.title}
             </label>
-            <button className="btn btn-sm btn-outline-danger">Delete</button>
+            <button
+                onClick={() => handleDeleteItem(item.title)}
+                className="btn btn-sm btn-outline-danger"
+            >
+                Delete
+            </button>
         </li>
     );
 }

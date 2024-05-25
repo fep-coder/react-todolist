@@ -43,6 +43,12 @@ function App() {
         );
     };
 
+    const handleDeleteItem = (title) => {
+        setItems((prevItems) =>
+            prevItems.filter((item) => item.title !== title)
+        );
+    };
+
     return (
         <div className="container">
             <div className="row">
@@ -53,6 +59,7 @@ function App() {
                     <Select />
                     <ItemList
                         handleToggleItem={handleToggleItem}
+                        handleDeleteItem={handleDeleteItem}
                         items={items}
                     />
                 </div>
