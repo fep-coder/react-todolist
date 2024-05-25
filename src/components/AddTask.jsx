@@ -1,12 +1,11 @@
 import { useRef, useState } from "react";
 
-function AddTask({ setItems }) {
+function AddTask({ handleAddItem }) {
     const [itemText, setItemText] = useState("");
     const inputRef = useRef();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // console.log(itemText);
 
         if (!itemText) {
             alert("Please add a task");
@@ -14,10 +13,10 @@ function AddTask({ setItems }) {
             return;
         }
 
-        setItems((prevItems) => [
-            ...prevItems,
-            { title: itemText, completed: false },
-        ]);
+        handleAddItem({
+            title: itemText,
+            completed: false,
+        });
 
         setItemText("");
     };

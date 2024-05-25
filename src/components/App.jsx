@@ -9,6 +9,10 @@ import { initialItems } from "../lib/items";
 function App() {
     const [items, setItems] = useState(initialItems);
 
+    const handleAddItem = (newItem) => {
+        setItems((prevItems) => [...prevItems, newItem]);
+    };
+
     return (
         <div className="container">
             <div className="row">
@@ -20,7 +24,7 @@ function App() {
                     <ItemList items={items} />
                 </div>
                 <div className="col-4">
-                    <AddTask setItems={setItems} />
+                    <AddTask handleAddItem={handleAddItem} />
                     <ButtonGroup />
                 </div>
             </div>
