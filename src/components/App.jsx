@@ -1,11 +1,14 @@
 import AddTask from "./AddTask";
 import ButtonGroup from "./ButtonGroup";
 import Counter from "./Counter";
-import Item from "./Item";
 import ItemList from "./ItemList";
 import Select from "./Select";
+import { useState } from "react";
+import { initialItems } from "../lib/items";
 
 function App() {
+    const [items, setItems] = useState(initialItems);
+
     return (
         <div className="container">
             <div className="row">
@@ -14,14 +17,10 @@ function App() {
                 <div className="col-8">
                     <Counter />
                     <Select />
-                    <ItemList>
-                        <Item />
-                        <Item />
-                        <Item />
-                    </ItemList>
+                    <ItemList items={items} />
                 </div>
                 <div className="col-4">
-                    <AddTask />
+                    <AddTask setItems={setItems} />
                     <ButtonGroup />
                 </div>
             </div>
