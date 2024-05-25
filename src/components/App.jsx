@@ -49,13 +49,19 @@ function App() {
         );
     };
 
+    const completedNumber = items.filter((item) => item.completed).length;
+    const totalNumber = items.length;
+
     return (
         <div className="container">
             <div className="row">
                 <h1 className="text-center">TO-DO List</h1>
 
                 <div className="col-8">
-                    <Counter />
+                    <Counter
+                        completedNumber={completedNumber}
+                        totalNumber={totalNumber}
+                    />
                     <Select />
                     <ItemList
                         handleToggleItem={handleToggleItem}
