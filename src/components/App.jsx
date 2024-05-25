@@ -2,11 +2,16 @@ import AddTask from "./AddTask";
 import ButtonGroup from "./ButtonGroup";
 import Counter from "./Counter";
 import ItemList from "./ItemList";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { initialItems } from "../lib/items";
 
 function App() {
-    const [items, setItems] = useState(initialItems);
+    const itemsFromLocalStorage = JSON.parse(localStorage.getItem("items"));
+    // const [items, setItems] = useState(itemsFromLocalStorage || initialItems);
+    const [items, setItems] = useState(() => {
+        console.log("items state changed");
+        return itemsFromLocalStorage || initialItems;
+    });
 
     const handleAddItem = (newItem) => {
         setItems((prevItems) => [...prevItems, newItem]);
@@ -50,6 +55,10 @@ function App() {
 
     const completedNumber = items.filter((item) => item.completed).length;
     const totalNumber = items.length;
+
+    useEffect(() => {
+        localStorage.setItem("items", JSON.stringify(items));
+    }, [items]);
 
     return (
         <div className="container">
